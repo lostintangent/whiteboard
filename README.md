@@ -2,13 +2,15 @@
 
 Visual Studio Live Share Whiteboard enhances the existing Visual Studio Live Share experience, by enabling you to open an integrated whiteboard, without needing to use a seperate tool or service. All participants within a Live Share session can collaboratively draw on the whiteboard, and see each others changes in real-time. For certain use cases (e.g. technical interviews, mentoring/classrooms), this can provide a useful means of communication, in addition to an [audio call](https://aka.ms/vsls-audio) and co-editing and debugging.
 
-<img width="700px" src="https://user-images.githubusercontent.com/116461/50564427-a5c37f00-0cd9-11e9-87ff-794ef4e440b2.gif" />
+<img width="725px" src="https://user-images.githubusercontent.com/116461/50567457-dddaba00-0cf9-11e9-840b-1b0a984d5ad9.gif" />
 
 This is an experimental extension, and isn't meant to replace existing solutions for creating persistent diagrams. For example, you can already use the [PlantUML](https://marketplace.visualstudio.com/items?itemName=jebbs.plantuml) extension today, and synchronize the contents in real-time over Live Share (since it's just a text file + a preview surface). Therefore, the whiteboard is useful for creating ad-hoc/ephemeral drawings/diagrams, that would otherwise be inefficient to create via other means (e.g. UML).
 
 ## Getting Started
 
 To begin using the collaborative whiteboard within your Visual Studio Live Share sessions, simply perform the following steps:
+
+1. Set the `liveshare.features` setting to `experimental`. This is a temporary requirement, since this extension makes use of experimental APIs in order to work.
 
 1. Install this extension, then reload VS Code.
 
