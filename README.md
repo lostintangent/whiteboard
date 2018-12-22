@@ -1,0 +1,45 @@
+# Visual Studio Live Share Whiteboard
+
+Visual Studio Live Share Whiteboard enhances the existing Visual Studio Live Share experience, by enabling you to open an integrated whiteboard, without needing to use a seperate tool or service. All participants within a Live Share session can collaboratively draw on the whiteboard, and see each others changes in real-time. For certain use cases (e.g. technical interviews, mentoring/classrooms), this can provide a useful means of communication, in addition to an [audio call](https://aka.ms/vsls-audio) and co-editing and debugging.
+
+> Both Visual Studio Live Share and the whiteboard extension are currently in preview. Therefore, the user experience and feature set are not final.
+
+## Getting Started
+
+To begin using the collaborative whiteboard within your Visual Studio Live Share sessions, simply perform the following steps:
+
+1. Install this extension, then reload VS Code.
+
+1. Click the `Live Share` button in your status bar to start a new collaboration session, and invite the developers you'd like to collaborate with.
+
+    <img src="https://aka.ms/vsls/quickstart/share" width="140px" />
+
+    > Make sure the developers you're collaborating with also have the VS Live Share Whiteboard extension installed.
+
+1. Open the Live Share `Session Details` view, and click the `Whiteboard` node in the tree to open the integrated whiteboard. 
+
+    <img width="450px" src="https://user-images.githubusercontent.com/116461/50552633-23d94480-0c4c-11e9-8a54-a61d3a5762d5.png" />
+
+1. Begin drawing! When other developers join the session, they can also open up the whiteboard and see the drawing you've done thus far. From there, everyone can contribute to the whiteboard, using the pencil, shapes and text, and see each other changes.
+
+## Known Issues
+
+This is an early/experimental extension, and therefore, has a number of known issues/limitations:
+
+1. If the host closes the whiteboard, then the existing content is lost. Guests can close/re-open the whiteboard, but the host currently can't. If the host does close it, then the whiteboard can still be used and shared, but the previous content will be cleared. 
+
+1. Any changes that are made to the whiteboard, while it's in the background (i.e. not the active tab) won't be syncronized. Therefore, all participants currently need to have the whiteboard focused in order to collaborate.
+
+1. The contents of the whiteboard aren't able to be persisted (though you could easily take a screenshot!). Therefore, the whiteboard is currently optimized for ephemeral information. Over time, we'll add persistence.
+
+1. The cursor for other participants aren't displayed (like they are within source files).
+
+1. The whiteboard can only be used by two participants currently.
+
+1. Read-only guests are able to edit the whiteboard, which probably doesn't make sense.
+
+## Credit
+
+This extension is only possible due to the **amazing** [Literally Canvas](http://literallycanvas.com/) library. It powers the entire whiteboard experience, and the drawing syncronization happens over the Live Share secure channel via the [Live Share extensibility API](https://npmjs.com/vsls).
+
+Additionally, the extension's icon is graciously provided by [techawarong on IconFinder](https://www.iconfinder.com/techawarong).

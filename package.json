@@ -1,0 +1,69 @@
+{
+	"name": "vsls-whiteboard",
+	"displayName": "VS Live Share Whiteboard",
+	"publisher": "lostintangent",
+	"description": "Adds a real-time collaborative whiteboard to Visual Studio Live Share sessions",
+	"version": "0.0.1",
+	"icon": "icon.png",
+	"homepage": "https://github.com/lostintangent/vsls-whiteboard",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/lostintangent/vsls-whiteboard"
+	},
+	"bugs": {
+		"url": "https://github.com/lostintangent/vsls-whiteboard/issues"
+	},
+	"author": {
+		"name": "Jonathan Carter"
+	},
+	"engines": {
+		"vscode": "^1.30.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"keywords": [
+		"Collaboration",
+		"Sharing",
+		"Remote"
+	],
+	"activationEvents": [
+		"onFileSystem:vsls",
+		"onCommand:liveshare.start",
+		"onCommand:liveshare.startFromActivityBar"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "liveshare.openWhiteboard",
+				"title": "Open Whiteboard",
+				"category": "Live Share"
+			}
+		],
+		"menus": {
+			"commandPalette": [
+				{
+					"command": "liveshare.openWhiteboard",
+					"when": "liveshare:isCollaborating"
+				}
+			]
+		}
+	},
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^3.1.4",
+		"vscode": "^1.1.25",
+		"tslint": "^5.8.0",
+		"@types/node": "^8.10.25"
+	},
+	"dependencies": {
+		"vsls": "^0.3.967"
+	}
+}
