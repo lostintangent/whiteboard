@@ -10,8 +10,6 @@ This is an experimental extension, and isn't meant to replace existing solutions
 
 To begin using the collaborative whiteboard within your Visual Studio Live Share sessions, simply perform the following steps:
 
-1. Set the `liveshare.features` setting to `experimental`. This is a temporary requirement, since this extension makes use of experimental APIs in order to work.
-
 1. Install this extension, then reload VS Code.
 
 1. Click the `Live Share` button in your status bar to start a new collaboration session, and invite the developers you'd like to collaborate with.
@@ -37,8 +35,6 @@ This is an early/experimental extension, and therefore, has a number of known is
 1. The contents of the whiteboard aren't able to be persisted (though you could easily take a screenshot!). Therefore, the whiteboard is currently optimized for ephemeral information. Over time, we'll add persistence.
 
 1. The cursor for other participants aren't displayed (like they are within source files).
-
-1. The whiteboard can only be used by two participants currently.
 
 1. Read-only guests are able to edit the whiteboard, which probably doesn't make sense.
 

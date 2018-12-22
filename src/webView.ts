@@ -6,7 +6,7 @@ export interface WebView {
     postMessage: (message: any) => Thenable<any>;
 }
 
-export default function (context: vscode.ExtensionContext): WebView {
+export default function (context: vscode.ExtensionContext): vscode.WebviewPanel {
     const staticResourcePath = path.join(context.extensionPath, "static");
     const webViewBaseUri = vscode.Uri.file(staticResourcePath).with({ scheme: "vscode-resource" });
 
@@ -17,7 +17,7 @@ export default function (context: vscode.ExtensionContext): WebView {
     });
 
     panel.webview.html = getWebViewContents(webViewBaseUri);
-    return panel.webview;
+    return panel;
 }
 
 function getWebViewContents(webViewBaseUri: vscode.Uri): string {

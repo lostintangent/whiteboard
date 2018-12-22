@@ -15,7 +15,7 @@ export default async function (vslsApi: vsls.LiveShare, webView: WebView) {
         })
     });
 
-    const baseService = initializeBaseService(vslsApi.session.peerNumber, service, webView);
+    const baseService = initializeBaseService(vslsApi.session.peerNumber, service, webView, true);
     baseService.setCustomWebviewHandler((command: string, data: any) => {
         if (command === "snapshotResponse") {
             getSnapshotResolve({ data });
