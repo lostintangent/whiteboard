@@ -1,21 +1,23 @@
 import { Command, ProviderResult, TreeDataProvider, TreeItem } from "vscode";
-import { LiveShare, View } from "vsls/vscode";
+import { LiveShare, View } from "vsls";
 
 const DATA_PROVIDER: TreeDataProvider<Command> = {
-    getChildren(element?: Command): ProviderResult<Command[]> {
-        return Promise.resolve([{
-            command: "liveshare.openWhiteboard",
-            title: "Whiteboard"
-        }]);
-    },
-    getTreeItem(element: Command): TreeItem {
-        const treeItem = new TreeItem("Whiteboard");
-        treeItem.command = element;
-        return treeItem;
-    }
+  getChildren(element?: Command): ProviderResult<Command[]> {
+    return Promise.resolve([
+      {
+        command: "liveshare.openWhiteboard",
+        title: "Whiteboard"
+      }
+    ]);
+  },
+  getTreeItem(element: Command): TreeItem {
+    const treeItem = new TreeItem("Whiteboard");
+    treeItem.command = element;
+    return treeItem;
+  }
 };
 
-export default function (vslsApi: LiveShare) {
-    vslsApi.registerTreeDataProvider(View.Session, DATA_PROVIDER);
-    vslsApi.registerTreeDataProvider(View.ExplorerSession, DATA_PROVIDER);
+export default function(vslsApi: LiveShare) {
+  vslsApi.registerTreeDataProvider(View.Session, DATA_PROVIDER);
+  vslsApi.registerTreeDataProvider(View.ExplorerSession, DATA_PROVIDER);
 }

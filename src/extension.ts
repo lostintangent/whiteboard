@@ -1,28 +1,28 @@
-import * as vscode from 'vscode';
-import * as vsls from "vsls/vscode";
+import * as vscode from "vscode";
+import * as vsls from "vsls";
 
-import createWebView from "./webView.js";
-import registerTreeDataProvider from "./treeDataProvider.js";
+import createWebView from "./webView";
+import registerTreeDataProvider from "./treeDataProvider";
 
-let webView: vscode.WebviewPanel;
 export async function activate(context: vscode.ExtensionContext) {
-	const vslsApi = await vsls.getApi();
-	if (vslsApi) {
-		registerTreeDataProvider(vslsApi);
+  const vslsApi = await vsls.getApi();
+  registerTreeDataProvider(vslsApi!);
 
-		context.subscriptions.push(vscode.commands.registerCommand("liveshare.openWhiteboard", async () => {
-			if (webView) {
-				webView.reveal();
-				return;
-			}
+  let webView: vscode.WebviewPanel;
+  context.subscriptions.push(
+    vscode.commands.registerCommand("liveshare.openWhiteboard", async () => {
+      if (webView) {
+        return webView.reveal();
+      } else {
+        webView = createWebView(context);
+      }
 
-			webView = createWebView(context);
+      let { default: initializeService } =
+        vslsApi!.session.role === vsls.Role.Host
+          ? require("./service/hostService")
+          : require("./service/guestService");
 
-			let { default: initializeService } = (vslsApi.session.role === vsls.Role.Host) ?
-				require("./service/hostService") : 
-				require("./service/guestService");
-
-			await initializeService(vslsApi, webView.webview);
-		}));
-	}
+      await initializeService(vslsApi, webView.webview);
+    })
+  );
 }
