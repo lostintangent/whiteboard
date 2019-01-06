@@ -9,13 +9,17 @@ export async function activate(context: vscode.ExtensionContext) {
   const vslsApi = await vsls.getApi();
   registerTreeDataProvider(vslsApi!);
 
-  let webView: vscode.WebviewPanel;
+  let webView: vscode.WebviewPanel | null;
   context.subscriptions.push(
     vscode.commands.registerCommand("liveshare.openWhiteboard", async () => {
       if (webView) {
         return webView.reveal();
       } else {
         webView = createWebView(context);
+
+        // If the end-user closes the whiteboard, then we
+        // need to ensure we re-created it on the next click.
+        webView.onDidDispose(() => (webView = null));
       }
 
       let { default: initializeService } =
@@ -26,6 +30,14 @@ export async function activate(context: vscode.ExtensionContext) {
       await initializeService(vslsApi, webView.webview);
     })
   );
+
+  vslsApi!.onDidChangeSession(e => {
+    // If there isn't a session ID, then that
+    // means the session has been ended.
+    if (!e.session.id && webView) {
+      webView.dispose();
+    }
+  });
 
   context.subscriptions.push(
     vscode.commands.registerCommand("liveshare.saveWhiteboard", async () => {

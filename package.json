@@ -33,7 +33,8 @@
     "onCommand:liveshare.start",
     "onCommand:liveshare.startFromActivityBar",
     "onCommand:liveshare.startReadOnly",
-    "onCommand:liveshare.startReadOnlyFromActivityBar"
+    "onCommand:liveshare.startReadOnlyFromActivityBar",
+    "onCommand:liveshare.startReadOnlyFromSessionExplorer"
   ],
   "main": "./dist/bundle.js",
   "contributes": {
