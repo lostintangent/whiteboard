@@ -3,7 +3,7 @@ const whiteboardElement = document.getElementById("whiteboard");
 
 const lc = LC.init(whiteboardElement, {
   backgroundColor: "#fff",
-  imageURLPrefix: "literallycanvas/img"
+  imageURLPrefix: "literallycanvas/images"
 });
 
 const REMOTE_MESSAGE_HANDLERS = {
