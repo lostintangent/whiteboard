@@ -3233,7 +3233,7 @@ defineSVGRenderer('Line', function(shape) {
   if (shape.endCapShapes[1]) {
     capString += lineEndCapShapes[shape.endCapShapes[1]].svg(x2, y2, Math.atan2(y2 - y1, x2 - x1), arrowWidth, shape.color);
   }
-  return "<g> <line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' " + dashString + " stroke-linecap='" + shape.capStyle + "' stroke='" + shape.color + " 'stroke-width='" + shape.strokeWidth + "' /> " + capString + " </g>";
+  return "<g> <line x1='" + x1 + "' y1='" + y1 + "' x2='" + x2 + "' y2='" + y2 + "' " + dashString + " stroke-linecap='" + shape.capStyle + "' stroke='" + shape.color + "' stroke-width='" + shape.strokeWidth + "' /> " + capString + " </g>";
 });
 
 defineSVGRenderer('LinePath', function(shape) {
