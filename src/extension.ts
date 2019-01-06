@@ -1,3 +1,4 @@
+import * as fs from "fs";
 import * as vscode from "vscode";
 import * as vsls from "vsls";
 
@@ -23,6 +24,26 @@ export async function activate(context: vscode.ExtensionContext) {
           : require("./service/guestService");
 
       await initializeService(vslsApi, webView.webview);
+    })
+  );
+
+  context.subscriptions.push(
+    vscode.commands.registerCommand("liveshare.saveWhiteboard", async () => {
+      if (webView) {
+        const uri = await vscode.window.showSaveDialog({
+          filters: {
+            SVG: ["svg"]
+          }
+        });
+        if (!uri) return;
+
+        webView.webview.onDidReceiveMessage(({ command, data }) => {
+          if (command === "snapshotSVGResponse") {
+            fs.writeFileSync(uri.toString().replace("file://", ""), data);
+          }
+        });
+        await webView.webview.postMessage({ command: "getSnapshotSVG" });
+      }
     })
   );
 }

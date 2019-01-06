@@ -5,7 +5,6 @@ module.exports = {
   devtool: "source-map",
   mode: "development",
   target: "node",
-  context: __dirname,
   module: {
     rules: [
       {

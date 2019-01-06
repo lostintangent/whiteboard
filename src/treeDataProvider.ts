@@ -12,6 +12,7 @@ const DATA_PROVIDER: TreeDataProvider<Command> = {
   },
   getTreeItem(element: Command): TreeItem {
     const treeItem = new TreeItem("Whiteboard");
+    treeItem.contextValue = "whiteboard";
     treeItem.command = element;
     return treeItem;
   }

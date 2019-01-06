@@ -14,13 +14,13 @@ To begin using the collaborative whiteboard within your Visual Studio Live Share
 
 1. Click the `Live Share` button in your status bar to start a new collaboration session, and invite the developers you'd like to collaborate with.
 
-    <img src="https://aka.ms/vsls/quickstart/share" width="140px" />
+   <img src="https://aka.ms/vsls/quickstart/share" width="140px" />
 
-    > Make sure the developers you're collaborating with also have the VS Live Share Whiteboard extension installed.
+   > Make sure the developers you're collaborating with also have the VS Live Share Whiteboard extension installed.
 
-1. Open the Live Share `Session Details` view, and click the `Whiteboard` node in the tree to open the integrated whiteboard. 
+1. Open the Live Share `Session Details` view, and click the `Whiteboard` node in the tree to open the integrated whiteboard.
 
-    <img width="450px" src="https://user-images.githubusercontent.com/116461/50552633-23d94480-0c4c-11e9-8a54-a61d3a5762d5.png" />
+   <img width="450px" src="https://user-images.githubusercontent.com/116461/50552633-23d94480-0c4c-11e9-8a54-a61d3a5762d5.png" />
 
 1. Begin drawing! When other developers join the session, they can also open up the whiteboard and see the drawing you've done thus far. From there, everyone can contribute to the whiteboard, using the pencil, shapes and text, and see each other changes.
 
@@ -28,11 +28,9 @@ To begin using the collaborative whiteboard within your Visual Studio Live Share
 
 This is an early/experimental extension, and therefore, has a number of known issues/limitations:
 
-1. If the host closes the whiteboard, then the existing content is lost. Guests can close/re-open the whiteboard, but the host currently can't. If the host does close it, then the whiteboard can still be used and shared, but the previous content will be cleared. 
+1. If the host closes the whiteboard, then the existing content is lost. Guests can close/re-open the whiteboard, but the host currently can't. If the host does close it, then the whiteboard can still be used and shared, but the previous content will be cleared.
 
 1. Any changes that are made to the whiteboard, while it's in the background (i.e. not the active tab) won't be syncronized. Therefore, all participants currently need to have the whiteboard focused in order to collaborate.
-
-1. The contents of the whiteboard aren't able to be persisted (though you could easily take a screenshot!). Therefore, the whiteboard is currently optimized for ephemeral information. Over time, we'll add persistence.
 
 1. The cursor for other participants aren't displayed (like they are within source files).
 
