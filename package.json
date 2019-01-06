@@ -31,7 +31,9 @@
   "activationEvents": [
     "onFileSystem:vsls",
     "onCommand:liveshare.start",
-    "onCommand:liveshare.startFromActivityBar"
+    "onCommand:liveshare.startFromActivityBar",
+    "onCommand:liveshare.startReadOnly",
+    "onCommand:liveshare.startReadOnlyFromActivityBar"
   ],
   "main": "./dist/bundle.js",
   "contributes": {
