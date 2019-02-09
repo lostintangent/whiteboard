@@ -30,8 +30,6 @@ This is an early/experimental extension, and therefore, has a number of known is
 
 1. If the host closes the whiteboard, then the existing content is lost. Guests can close/re-open the whiteboard, but the host currently can't. If the host does close it, then the whiteboard can still be used and shared, but the previous content will be cleared.
 
-1. Any changes that are made to the whiteboard, while it's in the background (i.e. not the active tab) won't be syncronized. Therefore, all participants currently need to have the whiteboard focused in order to collaborate.
-
 1. The cursor for other participants aren't displayed (like they are within source files).
 
 1. Read-only guests are able to edit the whiteboard, which probably doesn't make sense.

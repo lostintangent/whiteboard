@@ -9,17 +9,17 @@ export async function activate(context: vscode.ExtensionContext) {
   const vslsApi = (await vsls.getApi())!;
   registerTreeDataProvider(vslsApi);
 
-  let webView: vscode.WebviewPanel | null;
+  let webviewPanel: vscode.WebviewPanel | null;
   context.subscriptions.push(
     vscode.commands.registerCommand("liveshare.openWhiteboard", async () => {
-      if (webView) {
-        return webView.reveal();
+      if (webviewPanel) {
+        return webviewPanel.reveal();
       } else {
-        webView = createWebView(context);
+        webviewPanel = createWebView(context);
 
         // If the end-user closes the whiteboard, then we
         // need to ensure we re-created it on the next click.
-        webView.onDidDispose(() => (webView = null));
+        webviewPanel.onDidDispose(() => (webviewPanel = null));
       }
 
       let { default: initializeService } =
@@ -27,21 +27,21 @@ export async function activate(context: vscode.ExtensionContext) {
           ? require("./service/hostService")
           : require("./service/guestService");
 
-      await initializeService(vslsApi, webView.webview);
+      await initializeService(vslsApi, webviewPanel);
     })
   );
 
   vslsApi!.onDidChangeSession(e => {
     // If there isn't a session ID, then that
     // means the session has been ended.
-    if (!e.session.id && webView) {
-      webView.dispose();
+    if (!e.session.id && webviewPanel) {
+      webviewPanel.dispose();
     }
   });
 
   context.subscriptions.push(
     vscode.commands.registerCommand("liveshare.saveWhiteboard", async () => {
-      if (webView) {
+      if (webviewPanel) {
         const uri = await vscode.window.showSaveDialog({
           filters: {
             SVG: ["svg"]
@@ -49,12 +49,12 @@ export async function activate(context: vscode.ExtensionContext) {
         });
         if (!uri) return;
 
-        webView.webview.onDidReceiveMessage(({ command, data }) => {
+        webviewPanel.webview.onDidReceiveMessage(({ command, data }) => {
           if (command === "snapshotSVGResponse") {
             fs.writeFileSync(uri.toString().replace("file://", ""), data);
           }
         });
-        await webView.webview.postMessage({ command: "getSnapshotSVG" });
+        await webviewPanel.webview.postMessage({ command: "getSnapshotSVG" });
       }
     })
   );

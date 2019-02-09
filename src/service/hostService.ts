@@ -1,9 +1,12 @@
-import { WebView } from "../webView";
+import { WebviewPanel } from "vscode";
 import * as vsls from "vsls";
 
 import initializeBaseService, { SERVICE_NAME } from "./service";
 
-export default async function(vslsApi: vsls.LiveShare, webView: WebView) {
+export default async function(
+  vslsApi: vsls.LiveShare,
+  webviewPanel: WebviewPanel
+) {
   const service = await vslsApi.shareService(SERVICE_NAME);
   if (!service) return;
 
@@ -11,14 +14,14 @@ export default async function(vslsApi: vsls.LiveShare, webView: WebView) {
   service.onRequest("getSnapshot", () => {
     return new Promise(resolve => {
       getSnapshotResolve = resolve;
-      webView.postMessage({ command: "getSnapshot" });
+      webviewPanel.webview.postMessage({ command: "getSnapshot" });
     });
   });
 
   const baseService = initializeBaseService(
     vslsApi.session.peerNumber,
     service,
-    webView,
+    webviewPanel,
     true
   );
   baseService.setCustomWebviewHandler((command: string, data: any) => {

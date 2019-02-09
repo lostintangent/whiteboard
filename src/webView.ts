@@ -1,11 +1,6 @@
 import * as path from "path";
 import * as vscode from "vscode";
 
-export interface WebView {
-  onDidReceiveMessage: vscode.Event<any>;
-  postMessage: (message: any) => Thenable<any>;
-}
-
 export default function(context: vscode.ExtensionContext): vscode.WebviewPanel {
   const staticResourcePath = path.join(context.extensionPath, "static");
   const webViewBaseUri = vscode.Uri.file(staticResourcePath).with({
