@@ -6,8 +6,8 @@ import createWebView from "./webView";
 import registerTreeDataProvider from "./treeDataProvider";
 
 export async function activate(context: vscode.ExtensionContext) {
-  const vslsApi = await vsls.getApi();
-  registerTreeDataProvider(vslsApi!);
+  const vslsApi = (await vsls.getApi())!;
+  registerTreeDataProvider(vslsApi);
 
   let webView: vscode.WebviewPanel | null;
   context.subscriptions.push(
@@ -23,7 +23,7 @@ export async function activate(context: vscode.ExtensionContext) {
       }
 
       let { default: initializeService } =
-        vslsApi!.session.role === vsls.Role.Host
+        vslsApi.session.role === vsls.Role.Host
           ? require("./service/hostService")
           : require("./service/guestService");
 
