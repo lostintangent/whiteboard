@@ -3,7 +3,7 @@
   "displayName": "VS Live Share Whiteboard",
   "publisher": "lostintangent",
   "description": "Adds a real-time collaborative whiteboard to Visual Studio Live Share sessions",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "icon": "icon.png",
   "homepage": "https://github.com/lostintangent/vsls-whiteboard",
   "repository": {
@@ -86,5 +86,8 @@
   },
   "dependencies": {
     "vsls": "^0.3.967"
-  }
+  },
+  "extensionDependencies": [
+    "ms-vsliveshare.vsliveshare"
+  ]
 }
