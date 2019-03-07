@@ -2,6 +2,7 @@ import * as fs from "fs";
 import * as vscode from "vscode";
 import * as vsls from "vsls";
 
+console.log('test')
 import createWebView from "./webView";
 import registerTreeDataProvider from "./treeDataProvider";
 
