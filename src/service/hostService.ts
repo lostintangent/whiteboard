@@ -7,7 +7,8 @@ export default async function(
   vslsApi: vsls.LiveShare,
   webviewPanel: WebviewPanel
 ) {
-  const service = await vslsApi.shareService(SERVICE_NAME);
+  const namespacedService = `ns.${SERVICE_NAME}`;
+  const service = await vslsApi.shareService(namespacedService);
   if (!service) return;
 
   let getSnapshotResolve: any;
