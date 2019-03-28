@@ -76,16 +76,16 @@
     "postinstall": "node ./node_modules/vscode/bin/install"
   },
   "devDependencies": {
-    "@types/node": "^8.10.25",
+    "@types/node": "^8.10.45",
     "ts-loader": "^5.3.3",
-    "tslint": "^5.8.0",
-    "typescript": "^3.1.4",
-    "vscode": "^1.1.25",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0"
+    "tslint": "^5.14.0",
+    "typescript": "^3.3.4000",
+    "vscode": "^1.1.33",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
   },
   "dependencies": {
-    "vsls": "^0.3.967"
+    "vsls": "^0.3.1291"
   },
   "extensionDependencies": [
     "ms-vsliveshare.vsliveshare"
