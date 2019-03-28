@@ -10,7 +10,7 @@ export default function(context: vscode.ExtensionContext): vscode.WebviewPanel {
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
-    vscode.ViewColumn.Active,
+    vscode.ViewColumn.Beside,
     {
       enableScripts: true,
       localResourceRoots: [webViewBaseUri],
