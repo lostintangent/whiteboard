@@ -61,7 +61,9 @@ export default function(
 
   let handler: (command: string, data: any) => boolean;
   webviewPanel.webview.onDidReceiveMessage(({ command, data }) => {
-    if (handler && handler(command, data)) return;
+    if (handler && handler(command, data)) {
+      return;
+    }
 
     service.notify(command, { peer, data });
   });
