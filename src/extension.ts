@@ -19,7 +19,9 @@ export async function activate(context: vscode.ExtensionContext) {
 
         // If the end-user closes the whiteboard, then we
         // need to ensure we re-created it on the next click.
-        webviewPanel.onDidDispose(() => (webviewPanel = null));
+        webviewPanel.onDidDispose(() => {
+          webviewPanel = null
+        });
       }
 
       let { default: initializeService } =
