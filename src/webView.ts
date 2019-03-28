@@ -1,23 +1,23 @@
 import * as path from "path";
 import * as vscode from "vscode";
 
-export default function(context: vscode.ExtensionContext): vscode.WebviewPanel {
+export default function (context: vscode.ExtensionContext): vscode.WebviewPanel {
   const staticResourcePath = path.join(context.extensionPath, "static");
   const webViewBaseUri = vscode.Uri.file(staticResourcePath).with({
     scheme: "vscode-resource"
   });
 
+  let webviewTitle = "Live Share Whiteboard"
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
-    vscode.ViewColumn.Active,
+    vscode.ViewColumn.Beside,
     {
       enableScripts: true,
       localResourceRoots: [webViewBaseUri],
       retainContextWhenHidden: true
     }
   );
-
   panel.webview.html = getWebViewContents(webViewBaseUri);
   return panel;
 }
