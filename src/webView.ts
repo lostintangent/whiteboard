@@ -7,10 +7,11 @@ export function createWebView(context: vscode.ExtensionContext): vscode.WebviewP
     scheme: "vscode-resource"
   });
 
+  let webviewTitle = "Live Share Whiteboard"
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
-    vscode.ViewColumn.Active,
+    vscode.ViewColumn.Beside,
     {
       enableScripts: true,
       localResourceRoots: [webViewBaseUri],
