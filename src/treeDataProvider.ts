@@ -18,7 +18,7 @@ const DATA_PROVIDER: TreeDataProvider<Command> = {
   }
 };
 
-export default function(vslsApi: LiveShare) {
+export function registerTreeDataProvider(vslsApi: LiveShare) {
   vslsApi.registerTreeDataProvider(View.Session, DATA_PROVIDER);
   vslsApi.registerTreeDataProvider(View.ExplorerSession, DATA_PROVIDER);
 }

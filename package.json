@@ -85,7 +85,7 @@
     "webpack-cli": "^3.2.0"
   },
   "dependencies": {
-    "vsls": "^0.3.967"
+    "vsls": "^0.3.1291"
   },
   "extensionDependencies": [
     "ms-vsliveshare.vsliveshare"

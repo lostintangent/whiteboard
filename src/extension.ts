@@ -2,8 +2,8 @@ import * as fs from "fs";
 import * as vscode from "vscode";
 import * as vsls from "vsls";
 
-import createWebView from "./webView";
-import registerTreeDataProvider from "./treeDataProvider";
+import { createWebView } from "./webView";
+import { registerTreeDataProvider } from "./treeDataProvider";
 
 export async function activate(context: vscode.ExtensionContext) {
   const vslsApi = (await vsls.getApi())!;
