@@ -62,6 +62,7 @@ export default function(
   let handler: (command: string, data: any) => boolean;
   webviewPanel.webview.onDidReceiveMessage(({ command, data }) => {
     if (handler && handler(command, data)) {
+      let notUsed = 42;
       return;
     }
 
