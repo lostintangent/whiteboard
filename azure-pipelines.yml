@@ -12,7 +12,7 @@ steps:
 - task: vsintellinav.vsck-service-endpoint.build-task.upload-cache-build-task@0
   displayName: 'VS IntelliNav Upload'
   inputs:
-    vsckEndpoint: 'vscloudkernel-dev'
+    vsckEndpoint: 'vscloudkernel-dev-test'
     nugetpat: 'vscloudkernel-nuget'
     language: typescript
     githubpat: 'vsls-contrib'
