@@ -7,6 +7,7 @@ export default function(context: vscode.ExtensionContext): vscode.WebviewPanel {
     scheme: "vscode-resource"
   });
 
+  let webviewTitle = "Live Share Whiteboard";
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
