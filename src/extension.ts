@@ -3,11 +3,11 @@ import * as vscode from "vscode";
 import * as vsls from "vsls";
 
 import { createWebView } from "./webView";
-import { registerTreeDataProvider } from "./treeDataProvider";
+import registerTreeDataProvider from "./treeDataProvider";
 
 export async function activate(context: vscode.ExtensionContext) {
   const vslsApi = (await vsls.getApi())!;
-  registerTreeDataProvider(vslsApi);
+  const treeDataProvider = registerTreeDataProvider(vslsApi);
 
   let webviewPanel: vscode.WebviewPanel | null;
   context.subscriptions.push(
@@ -27,7 +27,7 @@ export async function activate(context: vscode.ExtensionContext) {
           ? require("./service/hostService")
           : require("./service/guestService");
 
-      await initializeService(vslsApi, webviewPanel);
+      await initializeService(vslsApi, webviewPanel, treeDataProvider);
     })
   );
 
