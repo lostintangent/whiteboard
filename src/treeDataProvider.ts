@@ -20,6 +20,8 @@ class WhiteboardTreeDataProvider implements IWhiteboardTreeDataProvider {
     title: LABEL_PREFIX
   };
 
+  private _isDirty = false;
+
   private _onDidChangeTreeData = new EventEmitter<Command>();
   public readonly onDidChangeTreeData: Event<Command> = this
     ._onDidChangeTreeData.event;
@@ -37,9 +39,13 @@ class WhiteboardTreeDataProvider implements IWhiteboardTreeDataProvider {
   }
 
   updateWhiteboardState(isDirty: boolean) {
-    const suffix = isDirty ? " (*)" : "";
-    this._treeCommand.title = `${LABEL_PREFIX}${suffix}`;
-    this._onDidChangeTreeData.fire(this._treeCommand);
+    if (this._isDirty !== isDirty) {
+      this._isDirty = isDirty;
+
+      const suffix = isDirty ? " (*)" : "";
+      this._treeCommand.title = `${LABEL_PREFIX}${suffix}`;
+      this._onDidChangeTreeData.fire(this._treeCommand);
+    }
   }
 }
 
