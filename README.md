@@ -1,6 +1,6 @@
-# Visual Studio Live Share Whiteboard
+# Live Share Whiteboard
 
-Visual Studio Live Share Whiteboard enhances the existing Visual Studio Live Share experience, by enabling you to open an integrated whiteboard, without needing to use a seperate tool or service. All participants within a Live Share session can collaboratively draw on the whiteboard, and see each others changes in real-time. For certain use cases (e.g. technical interviews, mentoring/classrooms), this can provide a useful means of communication, in addition to an [audio call](https://aka.ms/vsls-audio) and co-editing and debugging.
+Live Share Whiteboard enhances the existing [Visual Studio Live Share](https://aka.ms/vsls) experience, by enabling you to open an integrated whiteboard, without needing to use a seperate tool or service. All participants within a Live Share session can collaboratively draw on the whiteboard, and see each others changes in real-time. For certain use cases (e.g. technical interviews, mentoring/classrooms), this can provide a useful means of communication, in addition to an [audio call](https://aka.ms/vsls-audio) and co-editing and debugging.
 
 <img width="725px" src="https://user-images.githubusercontent.com/116461/50567457-dddaba00-0cf9-11e9-840b-1b0a984d5ad9.gif" />
 

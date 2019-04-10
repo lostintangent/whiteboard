@@ -1,5 +1,6 @@
 import { WebviewPanel } from "vscode";
 import { SharedService, SharedServiceProxy } from "vsls";
+import { IWhiteboardTreeDataProvider } from "../treeDataProvider";
 
 interface Message {
   data?: any;
@@ -27,6 +28,7 @@ export default function(
   peer: number,
   service: SharedService | SharedServiceProxy,
   webviewPanel: WebviewPanel,
+  treeDataProvider: IWhiteboardTreeDataProvider,
   broadcastNotifications: boolean = false
 ) {
   NOTIFICATIONS.forEach(commandName => {
@@ -41,6 +43,7 @@ export default function(
       if (webviewPanel.visible) {
         webviewPanel.webview.postMessage(webviewMessage);
       } else {
+        treeDataProvider.updateWhiteboardState(true);
         pendingWebviewMessages.push(webviewMessage);
       }
 
@@ -56,6 +59,7 @@ export default function(
       while ((message = pendingWebviewMessages.shift())) {
         webviewPanel.webview.postMessage(message);
       }
+      treeDataProvider.updateWhiteboardState(false);
     }
   });
 

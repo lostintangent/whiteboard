@@ -1,6 +1,6 @@
 {
   "name": "vsls-whiteboard",
-  "displayName": "VS Live Share Whiteboard",
+  "displayName": "Live Share Whiteboard",
   "publisher": "lostintangent",
   "description": "Adds a real-time collaborative whiteboard to Visual Studio Live Share sessions",
   "version": "0.0.7",

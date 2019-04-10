@@ -2,10 +2,12 @@ import { WebviewPanel } from "vscode";
 import * as vsls from "vsls";
 
 import initializeBaseService, { SERVICE_NAME } from "./service";
+import { IWhiteboardTreeDataProvider } from "../treeDataProvider";
 
 export default async function(
   vslsApi: vsls.LiveShare,
-  webviewPanel: WebviewPanel
+  webviewPanel: WebviewPanel,
+  treeDataProvider: IWhiteboardTreeDataProvider
 ) {
   const service = await vslsApi.shareService(SERVICE_NAME);
   if (!service) return;
@@ -22,6 +24,7 @@ export default async function(
     vslsApi.session.peerNumber,
     service,
     webviewPanel,
+    treeDataProvider,
     true
   );
   baseService.setCustomWebviewHandler((command: string, data: any) => {
