@@ -10,6 +10,7 @@ export async function activate(context: vscode.ExtensionContext) {
   registerTreeDataProvider(vslsApi);
 
   let webviewPanel: vscode.WebviewPanel | null;
+ 
   context.subscriptions.push(
     vscode.commands.registerCommand("liveshare.openWhiteboard", async () => {
       if (webviewPanel) {
