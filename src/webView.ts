@@ -1,12 +1,15 @@
 import * as path from "path";
 import * as vscode from "vscode";
 
-export function createWebView(context: vscode.ExtensionContext): vscode.WebviewPanel {
+export function createWebView(
+  context: vscode.ExtensionContext
+): vscode.WebviewPanel {
   const staticResourcePath = path.join(context.extensionPath, "static");
   const webViewBaseUri = vscode.Uri.file(staticResourcePath).with({
     scheme: "vscode-resource"
   });
 
+  const test = "Test string";
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
