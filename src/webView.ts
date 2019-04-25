@@ -9,7 +9,7 @@ export function createWebView(
     scheme: "vscode-resource"
   });
 
-  const test = "Test string";
+  const test = "Test string 1";
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
     "Live Share Whiteboard",
