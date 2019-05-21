@@ -14,4 +14,4 @@ steps:
     serviceConnection: 'rich-code-nav-dev'
     languages: typescript
     githubServiceConnection: 'vsls-contrib'
-    serviceEndpoint: 'https://vscloudkernel-dev.azurewebsites.net'
+    serviceEndpoint: 'https://vscloudkernel-dev.azurewebsites.net/api/v0.1'
