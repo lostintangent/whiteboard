@@ -11,8 +11,7 @@ steps:
 
 - task: RichCodeNavIndexer@0
   inputs:
-    serviceConnection: 'rich-code-nav'
-    nugetServiceConnection: 'rich-code-nav-nuget'
+    serviceConnection: 'rich-code-nav-dev'
     languages: typescript
     githubServiceConnection: 'vsls-contrib'
-    serviceEndpoint: 'https://prod.richnav.vsengsaas.visualstudio.com'
+    serviceEndpoint: 'https://vscloudkernel-dev.azurewebsites.net'
