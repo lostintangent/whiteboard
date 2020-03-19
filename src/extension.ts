@@ -1,12 +1,14 @@
-import * as fs from "fs";
 import * as vscode from "vscode";
 import * as vsls from "vsls";
+import { fileAccess } from '@file-abstractions/fileAccess';
 
 import { createWebView } from "./webView";
 import registerTreeDataProvider from "./treeDataProvider";
 
+const extensionId = 'lostintangent.vsls-whiteboard';
+
 export async function activate(context: vscode.ExtensionContext) {
-  const vslsApi = (await vsls.getApi())!;
+  const vslsApi = (await vsls.getApi(extensionId))!;
   const treeDataProvider = registerTreeDataProvider(vslsApi);
 
   let webviewPanel: vscode.WebviewPanel | null;
@@ -49,9 +51,9 @@ export async function activate(context: vscode.ExtensionContext) {
         });
         if (!uri) return;
 
-        webviewPanel.webview.onDidReceiveMessage(({ command, data }) => {
+        webviewPanel.webview.onDidReceiveMessage(async ({ command, data }) => {
           if (command === "snapshotSVGResponse") {
-            fs.writeFileSync(uri.toString().replace("file://", ""), data);
+            await fileAccess.writeFile(uri, data);
           }
         });
         await webviewPanel.webview.postMessage({ command: "getSnapshotSVG" });
