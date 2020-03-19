@@ -3,11 +3,20 @@
     "module": "commonjs",
     "target": "es2017",
     "outDir": "dist",
-    "lib": ["es6"],
+    "lib": [
+      "es6"
+    ],
     "sourceMap": true,
     "strict": true,
     "noUnusedLocals": true,
-    "rootDir": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "@file-abstractions/*": [
+        "abstractions/node/*"
+      ]
+    }
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -4,7 +4,7 @@ module.exports = {
   entry: "./src/extension.ts",
   devtool: "source-map",
   mode: "development",
-  target: "node",
+  target: "webworker",
   module: {
     rules: [
       {
@@ -19,13 +19,13 @@ module.exports = {
   resolve: {
     extensions: [".ts", ".js"],
     alias: {
-      '@file-abstractions': path.join(__dirname, './src/abstractions/node')
+      '@file-abstractions': path.join(__dirname, './src/abstractions/browser')
     }
   },
   output: {
     filename: "bundle.js",
     libraryTarget: "commonjs2",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "dist-web"),
     devtoolModuleFilenameTemplate: "file:///[absolute-resource-path]"
   }
 };

@@ -1,11 +1,41 @@
-import * as path from "path";
 import * as vscode from "vscode";
 
+declare module 'vscode' {
+  //#region https://github.com/microsoft/vscode/issues/90208
+
+  export interface ExtensionContext {
+		/**
+		 * Get the uri of a resource contained in the extension.
+		 *
+		 * @param relativePath A relative path to a resource contained in the extension.
+		 * @return The uri of the resource.
+		 */
+    asExtensionUri(relativePath: string): Uri;
+  }
+
+  //#endregion
+}
+
+function isNode(): boolean {
+  return (typeof process !== 'undefined') && (typeof process.release !== 'undefined') && (process.release.name === 'node');
+}
+
+function getExtensionUri(context: vscode.ExtensionContext, relativePath: string): vscode.Uri {
+  // Returns extension uri if this method is supported by VS Code.
+  // Otherwise returns the absolute path as a Uri
+  return context.asExtensionUri ?
+    context.asExtensionUri(relativePath) :
+    vscode.Uri.file(context.asAbsolutePath(relativePath));
+}
+
 export function createWebView(context: vscode.ExtensionContext): vscode.WebviewPanel {
-  const staticResourcePath = path.join(context.extensionPath, "static");
-  const webViewBaseUri = vscode.Uri.file(staticResourcePath).with({
-    scheme: "vscode-resource"
-  });
+  let staticResourcePathUri = getExtensionUri(context, 'static');
+
+  if (isNode()) {
+    staticResourcePathUri = staticResourcePathUri.with({
+      scheme: "vscode-resource"
+    });
+  }
 
   const panel = vscode.window.createWebviewPanel(
     "vsls-whiteboard",
@@ -13,12 +43,12 @@ export function createWebView(context: vscode.ExtensionContext): vscode.WebviewP
     vscode.ViewColumn.Active,
     {
       enableScripts: true,
-      localResourceRoots: [webViewBaseUri],
+      localResourceRoots: [staticResourcePathUri],
       retainContextWhenHidden: true
     }
   );
 
-  panel.webview.html = getWebViewContents(webViewBaseUri);
+  panel.webview.html = getWebViewContents(staticResourcePathUri);
   return panel;
 }
 

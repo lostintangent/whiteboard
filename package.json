@@ -74,6 +74,7 @@
   "scripts": {
     "vscode:prepublish": "npm run compile",
     "compile": "webpack",
+    "compile-web": "webpack --config webpack.browser.config",
     "watch": "webpack --watch",
     "postinstall": "node ./node_modules/vscode/bin/install"
   },

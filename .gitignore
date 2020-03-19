@@ -1,4 +1,5 @@
 dist
+dist-web
 node_modules
 *.vsix
 .DS_Store
