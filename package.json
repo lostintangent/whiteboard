@@ -36,7 +36,8 @@
     "onCommand:liveshare.startReadOnlyFromActivityBar",
     "onCommand:liveshare.startReadOnlyFromSessionExplorer",
     "onCommand:liveshare.inviteUserJoin",
-    "onCommand:liveshare.inviteUserJoinByEmail"
+    "onCommand:liveshare.inviteUserJoinByEmail",
+    "onCommand:liveshare.openWhiteboard"
   ],
   "main": "./dist/bundle.js",
   "contributes": {

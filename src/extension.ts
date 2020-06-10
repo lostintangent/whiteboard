@@ -25,7 +25,7 @@ export async function activate(context: vscode.ExtensionContext) {
       }
 
       let { default: initializeService } =
-        vslsApi.session.role === vsls.Role.Host
+        (vslsApi.session.role === vsls.Role.None || vslsApi.session.role === vsls.Role.Host)
           ? require("./service/hostService")
           : require("./service/guestService");
 
