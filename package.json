@@ -57,17 +57,7 @@
       "view/item/context": [
         {
           "command": "liveshare.saveWhiteboard",
-          "when": "view == liveshare.session && viewItem == whiteboard"
-        }
-      ],
-      "commandPalette": [
-        {
-          "command": "liveshare.openWhiteboard",
-          "when": "liveshare:isCollaborating"
-        },
-        {
-          "command": "liveshare.saveWhiteboard",
-          "when": "false"
+          "when": "view == liveshare.session && viewItem == Whiteboard"
         }
       ]
     }
