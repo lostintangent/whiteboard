@@ -81,12 +81,12 @@
   },
   "devDependencies": {
     "@types/node": "^8.10.25",
-    "ts-loader": "^5.3.3",
+    "ts-loader": "^9.4.2",
     "tslint": "^5.8.0",
     "typescript": "^3.1.4",
     "vscode": "^1.1.25",
-    "webpack": "^4.28.3",
-    "webpack-cli": "^3.2.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "dependencies": {
     "vsls": "^1.0.1830"
